@@ -2020,7 +2020,7 @@ const searchResults = [
   {
     Lebel: "sponsor",
     name: "Yoogle.com",
-    link: "https://yooglesearch-id.blogspot.com",
+    link: "https://putzztech.github.io/Yooglesearch/",
     description: "Pencarian yang banyak ditemukan di dunia dengan blog dari Yoogle.com Anda bisa mencari berbagai web di dunia ini"
   },
   // ... more blogs ...
