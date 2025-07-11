@@ -1,1 +1,195 @@
-hello world
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoogle Search</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #222;
+            --neon-blue: #00BFFF;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #111, #333);
+            color: var(--white);
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 1.5rem 2rem;
+        }
+        
+        .nav-button {
+            color: rgba(255, 255, 255, 0.7);
+            background: none;
+            border: none;
+            font-size: 1rem;
+            margin: 0 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+        }
+        
+        .nav-button:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+        
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            padding: 2rem;
+        }
+        
+        .search-box {
+            backdrop-filter: blur(10px);
+            background-color: rgba(34, 34, 34, 0.5);
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+        .search-box:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .search-input-container {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input-container:focus-within {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.3);
+        }
+        
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            color: var(--white);
+            outline: none;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .search-button {
+            background: none;
+            border: none;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .search-button:hover {
+            color: var(--neon-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .search-box {
+                padding: 1.5rem;
+            }
+            
+            .nav {
+                justify-content: center;
+                padding: 1rem;
+            }
+        }
+        .txt{
+            top: 200px;
+            left: 0px;
+            position: fixed;
+            width="200px"
+            padding: 11px;
+        }footer {
+    background-color: transparent;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #666;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 26px;
+    }
+    
+    .card {
+        padding: 25px;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <button class="nav-button">Home</button>
+        <a href="tentang.html"class="nav-button">Tentangn</a>
+        <button class="nav-button">Kontak</button>
+    </nav>
+    
+    <div class="search-container">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAA_5lnco79mRjnVR9E0UqD0xY00C-2fo1v9va1z_Cs7LKOk_ccWG7vU4g2SkUzaObo0XU7YU3G5hIj_zF0tdnsM7yz-s8zD-cP7tiovW-I6RfmZGd-jAcXfItRBgFXtQeCWDllLd92xCNNCKGwMa9rSDdTdM4fg_4yDTuNZVRk7zrXcTTYWiJ3wav/s160/IMG_20250112_062241-removebg-preview.png" alt="Yoogle" />
+        <div class="search-box">
+            <div class="search-input-container">
+                <input type="text" class="search-input" placeholder="Cari website, tools, atau portal favoritmu...">
+                <button class="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+  <footer>
+    © PutzzTech Developer 2025 – Semua Hak Dilindungi | searching 
+  </footer>
+    </div>
+    
+    <script>
+        document.querySelector('.search-button').addEventListener('click', function() {
+            const query = document.querySelector('.search-input').value.trim();
+            if (query) {
+                // Simulate loading before showing results
+                document.querySelector('.search-box').style.opacity = '0.5';
+                setTimeout(() => {
+                    window.location.href = `results.html?q=${encodeURIComponent(query)}`;
+                }, 500);
+            }
+        });
+        
+        // Allow search on Enter key
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search-button').click();
+            }
+        });
+    </script>
+</body>
+</html>
