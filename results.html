@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Pencarian</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #222;
+            --darker: #111;
+            --neon-blue: #00BFFF;
+            --light-blue: #1a73e8;
+            --white: #FFFFFF;
+            --gray: #9aa0a6;
+            --light-gray: #f8f9fa;
+            --border-gray: #444;
+            --text-light: rgba(255,255,255,0.8);
+            --text-lighter: rgba(255,255,255,0.9);
+        }
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--darker);
+            color: var(--text-light);
+            font-size: 14px;
+            line-height: 1.58;
+        }
+        
+        /* Header Styles */
+        .search-header {
+            display: flex;
+            padding: 15px 20px;
+            align-items: center;
+            border-bottom: 1px solid var(--border-gray);
+            background-color: var(--dark);
+        }
+        
+        .logo {
+            width: 92px;
+            height: 30px;
+            margin-right: 20px;
+            background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAA_5lnco79mRjnVR9E0UqD0xY00C-2fo1v9va1z_Cs7LKOk_ccWG7vU4g2SkUzaObo0XU7YU3G5hIj_zF0tdnsM7yz-s8zD-cP7tiovW-I6RfmZGd-jAcXfItRBgFXtQeCWDllLd92xCNNCKGwMa9rSDdTdM4fg_4yDTuNZVRk7zrXcTTYWiJ3wav/s160/IMG_20250112_062241-removebg-preview.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: brightness(0) invert(1);
+        }
+        
+        .search-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-gray);
+            border-radius: 24px;
+            padding: 5px 15px;
+            max-width: 690px;
+            height: 44px;
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .search-container:hover {
+            box-shadow: 0 1px 6px rgba(0, 191, 255, 0.2);
+            border-color: var(--neon-blue);
+        }
+        
+        .search-input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 0 10px;
+            background-color: transparent;
+            color: var(--white);
+        }
+        
+        .search-icon {
+            color: var(--gray);
+            margin-right: 10px;
+        }
+        
+        /* Voice Search Button */
+        .voice-search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 8px;
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .voice-search-btn:hover {
+            opacity: 0.8;
+        }
+        
+        .voice-search-btn.listening {
+            color: #f44336;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--darker);
+        }
+        
+        .results-count {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        /* Result Item */
+        .result-item {
+            margin-bottom: 26px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .result-item:hover {
+            background-color: rgba(255,255,255,0.08);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .result-title {
+            color: var(--neon-blue);
+            font-size: 20px;
+            font-weight: 400;
+            margin: 0;
+            margin-bottom: 5px;
+        }
+        
+        .result-url {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 3px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .url-text {
+            color: #5db85d;
+            margin-right: 5px;
+        }
+        
+        .result-description {
+            color: var(--text-light);
+            line-height: 1.58;
+        }
+        
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border-gray);
+            padding: 20px;
+            background-color: var(--dark);
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        /* Dark mode link colors */
+        a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: transparent;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #666;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 26px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+        }
+        
+        .sponsor-tag {
+            background: #ffeaa7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+        
+        /* Voice search status */
+        .voice-status {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--neon-blue);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .voice-status.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Search -->
+    <header class="search-header">
+        <a href="index.html" class="logo">
+            <!-- Isi logo di sini (teks/gambar) -->
+        </a>
+        <div class="search-container">
+            <svg class="search-icon" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+            </svg>
+            <input type="text" class="search-input" id="search-input" value="" placeholder="Cari atau ucapkan sesuatu...">
+            <button class="voice-search-btn" id="voice-search-btn" title="Cari dengan suara">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2h-1v2a8 8 0 0 0 7 7.93V22h2v-2.07A8 8 0 0 0 20 12v-2z"></path>
+                </svg>
+            </button>
+            <div class="voice-status" id="voice-status"></div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="results-count" id="results-count"></div>
+        
+        <div id="results-container">
+            <!-- Results will be inserted here by JavaScript -->
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        © PutzzTech Developer 2025 – Semua Hak Dilindungi | Searching 
+    </footer>
+
+    <script src="results.js">results.js</script>
+      <script>
+
+        // Get elements
+        const searchInput = document.getElementById('search-input');
+        const voiceSearchBtn = document.getElementById('voice-search-btn');
+        const voiceStatus = document.getElementById('voice-status');
+        const resultsContainer = document.getElementById('results-container');
+        const resultsCount = document.getElementById('results-count');
+
+        // Check if browser supports speech recognition
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition;
+        
+        if (SpeechRecognition) {
+            recognition = new SpeechRecognition();
+            recognition.continuous = false; 
+            recognition.interimResults = false;
+            recognition.lang = 'id-ID'; // Set language to Indonesian
+
+            recognition.onstart = function() {
+                voiceSearchBtn.classList.add('listening');
+                voiceStatus.textContent = "Mendengarkan...";
+                voiceStatus.classList.add('active');
+            };
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                searchInput.value = transcript;
+                voiceStatus.textContent = "Terdeteksi: " + transcript;
+                setTimeout(() => {
+                    voiceStatus.classList.remove('active');
+                }, 3000);
+                performSearch(transcript);
+            };
+
+            recognition.onerror = function(event) {
+                voiceStatus.textContent = "Error: " + event.error;
+                setTimeout(() => {
+                    voiceStatus.classList.remove('active');
+                }, 3000);
+            };
+
+            recognition.onend = function() {
+                voiceSearchBtn.classList.remove('listening');
+            };
+
+            voiceSearchBtn.addEventListener('click', function() {
+                try {
+                    if (voiceSearchBtn.classList.contains('listening')) {
+                        recognition.stop();
+                        return;
+                    }
+                    searchInput.value = '';
+                    recognition.start();
+                } catch(e) {
+                    voiceStatus.textContent = "Error: " + e.message;
+                    voiceStatus.classList.add('active');
+                    setTimeout(() => {
+                        voiceStatus.classList.remove('active');
+                    }, 3000);
+                }
+            });
+        } else {
+            voiceSearchBtn.style.display = 'none';
+        }
+
+        // Get search query from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q') || '';
+        
+        // Set search input value
+        searchInput.value = query;
+        
+        // Display results if there's a query
+        if (query) {
+            performSearch(query);
+        }
+        
+        // Search function
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const newQuery = this.value.trim();
+                if (newQuery) {
+                    window.location.href = `results.html?q=${encodeURIComponent(newQuery)}`;
+                }
+            }
+        });
+
+        function performSearch(query) {
+            // Filter results (case insensitive)
+            const filteredResults = searchResults.filter(item => 
+                item.name.toLowerCase().includes(query.toLowerCase()) || 
+                item.description.toLowerCase().includes(query.toLowerCase()) ||
+                item.link.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            // Update results count
+            resultsCount.textContent = `Menemukan ${filteredResults.length} hasil`;
+            
+            // Display results
+            if (filteredResults.length > 0) {
+                resultsContainer.innerHTML = '';
+                
+                filteredResults.forEach(result => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    
+                    // Extract domain from link
+                    const domain = new URL(result.link.startsWith('http') ? result.link : `https://${result.link}`).hostname.replace('www.', '');
+                    
+                    // Add sponsor label if exists
+                    const sponsorLabel = result.Lebel === "sponsor" 
+                        ? '<span class="sponsor-tag">Sponsor</span>' 
+                        : '';
+                    
+                    resultItem.innerHTML = `
+                        <h2 class="result-title">
+                            <a href="${result.link}" target="_blank">${result.name}</a>
+                            ${sponsorLabel}
+                        </h2>
+                        <div class="result-url">
+                            <span class="url-text">${domain}</span>
+                            <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="#5db85d">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path>
+                            </svg>
+                        </div>
+                        <div class="result-description">${result.description}</div>
+                    `;
+                    
+                    resultsContainer.appendChild(resultItem);
+                });
+            } else {
+                resultsContainer.innerHTML = '<div style="text-align: center; padding: 40px 0; color: var(--gray);">Tidak ditemukan hasil untuk "' + query + '"</div>';
+            }
+        }
+    </script>
+</body>
+</html>
