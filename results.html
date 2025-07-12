@@ -344,7 +344,7 @@
             if (e.key === 'Enter') {
                 const newQuery = this.value.trim();
                 if (newQuery) {
-                    window.location.href = `results.html/search?q=${encodeURIComponent(newQuery)}`;
+                    window.location.href = `results.html?q=${encodeURIComponent(newQuery)}`;
                 }
             }
         });
