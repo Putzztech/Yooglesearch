@@ -1401,7 +1401,56 @@ const searchResults = [
     name: "Google Flights",
     link: "https://www.google.com/flights",
     description: "Airfare comparison service by Google"
-  },
+  },{
+  name: "Khan Academy",
+  link: "https://www.khanacademy.org",
+  description: "Platform edukasi gratis dengan video pembelajaran interaktif untuk berbagai mata pelajaran."
+},
+{
+  name: "Coursera",
+  link: "https://www.coursera.org",
+  description: "Situs kursus online dari universitas dan perusahaan ternama, cocok untuk belajar skill baru."
+},
+{
+  name: "Dribbble",
+  link: "https://dribbble.com",
+  description: "Komunitas kreatif untuk desainer grafis dan UI/UX, penuh inspirasi visual."
+},
+{
+  name: "Product Hunt",
+  link: "https://www.producthunt.com",
+  description: "Tempat menemukan produk digital terbaru dan inovatif dari startup di seluruh dunia."
+},
+{
+  name: "Unsplash",
+  link: "https://unsplash.com",
+  description: "Sumber gambar gratis berkualitas tinggi untuk desain, blog, dan proyek kreatif."
+},
+{
+  name: "CodePen",
+  link: "https://codepen.io",
+  description: "Editor online untuk eksperimen HTML, CSS, dan JavaScript secara langsung."
+},
+{
+  name: "Dev.to",
+  link: "https://dev.to",
+  description: "Komunitas developer untuk berbagi artikel, tutorial, dan diskusi seputar teknologi."
+},
+{
+  name: "Figma",
+  link: "https://www.figma.com",
+  description: "Alat desain UI/UX berbasis cloud yang mendukung kolaborasi real-time."
+},
+{
+  name: "Canva",
+  link: "https://www.canva.com",
+  description: "Platform desain grafis yang mudah digunakan untuk membuat poster, presentasi, dan konten sosial media."
+},
+{
+  name: "Pixabay",
+  link: "https://pixabay.com",
+  description: "Situs penyedia gambar, video, dan musik bebas hak cipta untuk berbagai keperluan."
+},
   {
     name: "Expedia",
     link: "https://www.expedia.com",
